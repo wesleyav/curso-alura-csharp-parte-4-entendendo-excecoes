@@ -8,21 +8,24 @@ namespace ByteBank
         {
             try
             {
-                Metodo();
+                ContaCorrente conta = new ContaCorrente(0, 0);
 
             }
-            catch (DivideByZeroException e)
+            catch (Exception ex)
             {
-                Console.WriteLine("Não é possível divisão por zero.");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
-                Console.WriteLine("Aconteceu um erro!");
+
+                Console.WriteLine(ex.Message);
             }
 
+
+
+            Metodo();
+
+            Console.WriteLine("Execução finalizada. Tecle enter para sair.");
             Console.ReadLine();
+
+
+
         }
         //Teste com a cadeia de chamada:
         //Metodo -> TestaDivisao -> Dividir

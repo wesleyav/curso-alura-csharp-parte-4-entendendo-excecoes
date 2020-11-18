@@ -14,11 +14,11 @@ namespace ByteBank
 
         public Cliente Titular { get; set; }
 
-        
+
         public int Numero { get; }
-               
+
         public int Agencia { get; }
-        
+
 
         private double _saldo = 100;
 
@@ -41,6 +41,15 @@ namespace ByteBank
 
         public ContaCorrente(int agencia, int numero)
         {
+            if (agencia <= 0 || numero <= 0)
+            {
+                Exception excecao = new Exception("A agencia e o número devem ser maiores que 0");
+
+
+                throw excecao;
+
+            }
+
             Agencia = agencia;
             Numero = numero;
             TaxaOperacao = 30 / TotalDeContasCriadas;
@@ -49,7 +58,7 @@ namespace ByteBank
 
         public bool Sacar(double valor)
         {
-            
+
             if (_saldo < valor)
             {
                 return false;
