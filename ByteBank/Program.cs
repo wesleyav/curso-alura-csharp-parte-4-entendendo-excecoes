@@ -10,51 +10,29 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
+
             try
             {
-                ContaCorrente conta = new ContaCorrente(456, 4578420);
-                ContaCorrente conta2 = new ContaCorrente(485, 456478);
+                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
+                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
 
-                conta2.Transferir(10000, conta);
-
-                conta.Depositar(50);
-                Console.WriteLine(conta.Saldo);
-                conta.Sacar(-500);
-                Console.WriteLine(conta.Saldo);
+                //conta1.Transferir(10000, conta2);
+                conta1.Sacar(10000);
             }
-            catch (ArgumentException ex)
+            catch (OperacaoFinanceiraException e)
             {
-                if (ex.ParamName == "numero")
-                {
-
-                }
-
-                Console.WriteLine("Argumento com problema: " + ex.ParamName);
-                Console.WriteLine("Ocorreu uma exceção do tipo ArgumentException");
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                //Console.WriteLine("Informações da INNER EXCEPTION (exceção interna): ");
+                //Console.WriteLine(e.InnerException.Message);
+                //Console.WriteLine(e.InnerException.StackTrace);
             }
-            catch (SaldoInsuficienteException ex)
-            {
-                Console.WriteLine(ex.Saldo);
-                Console.WriteLine(ex.ValorSaque);
-                Console.WriteLine(ex.StackTrace);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine("Excecão do tipo SaldoInsuficienteException");
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            //Metodo();
 
             Console.WriteLine("Execução finalizada. Tecle enter para sair");
             Console.ReadLine();
         }
 
-        // Teste com a cadeia de chamada:
-        // Metodo -> TestaDivisao -> Dividir
+
         private static void Metodo()
         {
             TestaDivisao(0);
